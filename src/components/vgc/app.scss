@@ -1,0 +1,29 @@
+
+@import '../commonStyle/comSet.scss';
+
+*{padding:0;margin:0;}
+body{
+    @include bg(#f3f3f3)
+}
+.app{
+    padding:20px;
+    overflow: hidden;
+    @include wh(90%);
+    margin:0 auto;
+    @include bg(white);
+}
+
+
+.title{
+    margin-bottom:20px;
+    font-size:25px;
+    font-weight: 500;
+    color:$textColor;
+}
+.mintitle{
+    font-weight: 500;
+    font-size:20px;
+    color:$textColor;
+}
+
+
