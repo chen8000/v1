@@ -18,11 +18,18 @@ class Detail extends Component {
         }
     }
 
+    // 初始化渲染
     componentDidMount(){
-
         // 渲染图标数据
         renderCharts(this.charts, this.state)
     }
+
+    // 修改数据后渲染
+    componentDidUpdate(){
+        // 渲染图标数据
+        renderCharts(this.charts, this.state)
+    }
+    
 
     render(){
         return (
@@ -31,6 +38,7 @@ class Detail extends Component {
                     <h2>Lorem, ipsum ipsum</h2>
                     <div>
                         <span className={ style.left }></span>
+                        
                     </div>
                 </div>
 
