@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import style from './index.scss'
 import { renderCharts } from './renderCharts'
 
+import Select from '../select'
+
 class Detail extends Component {
 
     constructor(props){
@@ -14,7 +16,9 @@ class Detail extends Component {
             // 奥迪数据
             AudiData:[15, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133],
             // 大众数据
-            VCICData:[10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 60, 90, 50, 16,10, 30, 80, 60, 90, 50]
+            VCICData:[10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 60, 90, 50, 16,10, 30, 80, 60, 90, 50],
+            
+            select:['月', '日']
         }
     }
 
@@ -29,17 +33,24 @@ class Detail extends Component {
         // 渲染图标数据
         renderCharts(this.charts, this.state)
     }
-    
+
+    getVal = val => {
+        // 获取select选中的值
+        console.log(val)
+    }
 
     render(){
+        let { select } = this.state
         return (
             <div>
-                <div>
-                    <h2>Lorem, ipsum ipsum</h2>
-                    <div>
+                <div className={ style.titleBar }>
+                    <h2 className={ style.title }>Lorem, ipsum ipsum</h2>
+                    <div className={ style.viewDatebox }>
                         <span className={ style.left }></span>
-                        
+                        <p className={ style.viewDate }>2018-9-6</p>
+                        <span className={ style.right }></span>
                     </div>
+                    <Select select={ select } getVal={ this.getVal }/>
                 </div>
 
                 {/* 放图表 */}
