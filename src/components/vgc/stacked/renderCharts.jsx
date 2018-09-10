@@ -49,7 +49,7 @@ export const renderCharts = (obj, { xNum, data }) => {
                 data: data,
                 type: 'bar',
                 itemStyle:{
-                    color:'#1b4663'
+                    color:'#1b4663' 
                 }
             }]
         })

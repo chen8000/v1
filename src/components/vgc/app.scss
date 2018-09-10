@@ -25,5 +25,19 @@ body{
     font-size:20px;
     color:$vgcBlue;
 }
+.twoLayout{
+    &:after{
+        @include afterClear;
+    }
+}
+.topPosts,
+.topUsers{
+    @include wh(calc(50% - 8px));
+    float: left;
+    margin-top:15px;
+}
+.topPosts{
+    float: right;
+}
 
 

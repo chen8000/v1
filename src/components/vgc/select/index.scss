@@ -44,7 +44,7 @@ $timeH:30px;
 
         li{
             cursor: pointer;
-            border-bottom:1px solid #dfdfdf;
+            border-bottom:1px solid $hrColor;
             &:hover{
                 @include bg(rgb(245, 245, 245));
             }

@@ -7,6 +7,8 @@ import style from './app.scss'
 import OverView from './overView'
 import Detail from './detail'
 import Stacked from './stacked'
+import TopUsers from './topUsers'
+import TopPosts from './topPosts'
 
 class App extends Component {
 
@@ -22,6 +24,22 @@ class App extends Component {
                 <Detail />
                 {/* 柱形图 */}
                 <Stacked />
+
+                {/* 两列布局 */}
+
+                {/* 两列布局 */}
+                <div className={style.twoLayout}>
+                    {/* topUsers */}
+                    <div className={style.topUsers}>
+                        <TopUsers /> 
+                    </div>
+
+                    {/* topPosts */}
+                    <div className={style.topPosts}>
+                        <TopPosts />
+                    </div>
+                </div>
+                
             </div>
         )
     }
