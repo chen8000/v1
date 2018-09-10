@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import style from './index.scss'
 import { renderCharts } from './renderCharts'
 import Select from '../select'
+import 'fetch-detector'
+import 'fetch-ie8'
 
 class Stacked extends Component {
 
@@ -16,18 +18,49 @@ class Stacked extends Component {
             data : [120, 200, 150, 80, 70, 110],
 
             // 选择部门
-            select : ['部门1','部门2','部门3','部门4','部门5']
+            select : [
+                {
+                    name:'部门1',
+                    id:0
+                },
+                {
+                    name:'部门2',
+                    id:1
+                },
+                {
+                    name:'部门3',
+                    id:2
+                },
+                {
+                    name:'部门4',
+                    id:3
+                },
+                {
+                    name:'部门5',
+                    id:4
+                },
+                {
+                    name:'部门6',
+                    id:5
+                }
+            ]
         }
-    }
 
-    // 初始化渲染
-    componentDidMount(){
-        renderCharts(this.echarts, this.state)
+        // 获取数据
+        this.getData()
     }
 
     // 修改数据后渲染
     componentDidUpdate(){
         renderCharts(this.echarts, this.state)
+    }
+
+    getData = () => {
+        fetch('/json/stacked.json')
+        .then(res => res.json())
+        .then(res => {
+            this.setState(res)
+        })
     }
 
     getVal = val => {

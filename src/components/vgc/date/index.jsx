@@ -7,10 +7,11 @@ class Date extends Component{
 
     // 减
     dateLeft = () => {
+        
         let { selected, date } = this.props
         let { year, month, day } = date
 
-        if(selected === '月'){
+        if(selected.name === '月'){
             // 月份
             date.month = (() => {
                 let m = month - 1
@@ -27,7 +28,7 @@ class Date extends Component{
             // 修改 date
             this.props.setDate(date)
         }
-        if(selected === '日'){
+        if(selected.name === '日'){
             // 天
             let thisDayTotal = total(year, month)
             
@@ -60,7 +61,7 @@ class Date extends Component{
         let { selected, date } = this.props
         let { year, month, day } = date
 
-        if(selected === '月'){
+        if(selected.name === '月'){
             // 月份
             date.month = (() => {
                 let m = month + 1
@@ -77,7 +78,7 @@ class Date extends Component{
             // 修改 date
             this.props.setDate(date)
         }
-        if(selected === '日'){
+        if(selected.name === '日'){
             // 天
             let thisDayTotal = total(year, month)
             

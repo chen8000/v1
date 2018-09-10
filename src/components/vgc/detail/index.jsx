@@ -17,15 +17,15 @@ class Detail extends Component {
 
         this.state = {
             // 坐标 一个月的总数
-            xNum:total(getDate().year, getDate().month),  // 根据选中的是日还是月修改坐标
+            xNum:24,  // 根据选中的是日还是月修改坐标
             // 奥迪数据
             AudiData:[],
             // 大众数据
             VCICData:[],
             // select
-            select:['月', '日'],
+            select:[{name:'日', id : 0}, {name:'月', id : 1}],
             // 默认选中值
-            selected:'月', // 当前选中的是日还是月
+            selected:{name:'日', id : 0}, // 当前选中的是日还是月
             // 当前日期
             date:getDate() // 当前选中的日期
             
@@ -51,24 +51,26 @@ class Detail extends Component {
 
     }
 
+    // 得到当前选中的 月/日 和日期（根据这个问后台要数据）
     getJson = (val) => {
         console.log(val)
     }
 
     // 获取select的val
     getVal = val => {
+        
         let { selected, date } = this.state
+        
+        selected.name = val.name
 
-        selected = val
-
-        this.setState({selected:val})
+        this.setState({selected})
 
         // 根据选中的是月还是日，修改坐标数值
-        if(selected === '月'){
+        if(selected.name === '月'){
             let xNum = total(date.year, date.month)
             this.setState({ xNum })
         }
-        if(selected === '日'){
+        if(selected.name === '日'){
             let xNum = 24
             this.setState({ xNum })
         }
@@ -80,7 +82,7 @@ class Detail extends Component {
         let {xNum, selected} = this.state
 
         // 如果是月，根据选中的日期显示每月多少天
-        if(selected === '月'){
+        if(selected.name === '月'){
             xNum = total(date.year, date.month)
             this.setState({ xNum })
         }

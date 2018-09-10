@@ -34,8 +34,6 @@ class Select extends Component {
 
         select.val = select.option[index]
 
-        this.setState({ select })
-
         // 调用父组件，传给父组件选中的值
         this.props.getVal(select.option[index])
     }
@@ -44,11 +42,11 @@ class Select extends Component {
         let { select } = this.state
         return (
             <div className={ style.select }>
-                <span className={ style.val } onClick={ this.selectFn }>{select.val}</span>
+                <span className={ style.val } onClick={ this.selectFn }>{select.val.name}</span>
                 <ul className={ select.renderType ? style.selectAni : null }>
                     {
                         select.option.map((res, i) => 
-                            <li onClick={ () => this.getVal(i) } key={ i }>{ res }</li>
+                            <li onClick={ () => this.getVal(i) } key={ i }>{ res.name }</li>
                         )
                     }
                 </ul>
