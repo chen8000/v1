@@ -1,6 +1,18 @@
 
 @import '../../commonStyle/comSet.scss';
 
+.title{
+    margin-bottom:20px;
+    font-size:25px;
+    font-weight: 500;
+    color:$vgcBlue;
+}
+.mintitle{
+    font-weight: 500;
+    font-size:20px;
+    color:$vgcBlue;
+}
+
 .chart_page{
     width: 90%;
     margin:0 auto;

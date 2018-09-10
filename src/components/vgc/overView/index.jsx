@@ -36,21 +36,26 @@ class OverView extends Component {
     render(){
         let { bar } = this.state
         return (
-            <div className={style.textViewBox}>
-                <ul className={style.textView}>
-                    {
-                        bar.map((res, i) => 
-                            <li key={ i }>
-                                <div className={style.viewLayout}>
-                                    <h2 className={ style.viewTitle }>{ res.title }</h2>
-                                    <p className={ style.viewNum  }>{ res.num }</p>
-                                    <p className={style.viewDes}>{ res.des }</p>
-                                </div>
-                            </li>
-                        )
-                    }
-                </ul>
+            <div>
+                <h2 className={ style.title }>Lorem, ipsum dolor sit amet consectetur adipisicing </h2>
+                <h3 className={ style.mintitle }>psum dolor sit</h3>
+                <div className={style.textViewBox}>
+                    <ul className={style.textView}>
+                        {
+                            bar.map((res, i) => 
+                                <li key={ i }>
+                                    <div className={style.viewLayout}>
+                                        <h2 className={ style.viewTitle }>{ res.title }</h2>
+                                        <p className={ style.viewNum  }>{ res.num }</p>
+                                        <p className={style.viewDes}>{ res.des }</p>
+                                    </div>
+                                </li>
+                            )
+                        }
+                    </ul>
+                </div>
             </div>
+            
         )
     }
 }
