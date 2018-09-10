@@ -6,7 +6,7 @@ $timeH:30px;
 .select{
     float: right;
     margin-right: 30px;
-    @include wh(60px, $timeH);
+    @include wh(auto, $timeH);
     line-height:$timeH;
     @include shadow;
     cursor: pointer;
@@ -14,6 +14,7 @@ $timeH:30px;
 
     .val{
         padding-left:10px;
+        padding-right: 30px;
         display: block;
         position: relative;
 

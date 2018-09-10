@@ -6,6 +6,7 @@ import style from './app.scss'
 // 子组件
 import OverView from './overView'
 import Detail from './detail'
+import Stacked from './stacked'
 
 class App extends Component {
 
@@ -19,6 +20,8 @@ class App extends Component {
                 <OverView />
                 {/* line charts */}
                 <Detail />
+                {/* 柱形图 */}
+                <Stacked />
             </div>
         )
     }
