@@ -30,9 +30,17 @@
     p:first-child{
         flex:3;
         padding-right:15px;
+        /*-------------- 992 pad*/
+        @media all and (max-width: 992px){
+            flex:4;
+        }
     }
     p:last-child{
         flex:1;
+        /*-------------- 992 pad*/
+        @media all and (max-width: 992px){
+            flex:2;
+        }
     }
 }
 .usersbox{
@@ -58,9 +66,17 @@
             p:first-child{
                 flex:3;
                 padding-right:15px;
+                /*-------------- 992 pad*/
+                @media all and (max-width: 992px){
+                    flex:4;
+                }
             }
             p:last-child{
                 flex:1;
+                /*-------------- 992 pad*/
+                @media all and (max-width: 992px){
+                    flex:2;
+                }
             }
         }
     }

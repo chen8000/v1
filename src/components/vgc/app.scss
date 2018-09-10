@@ -28,6 +28,10 @@ body{
     @include wh(calc(50% - 8px));
     float: left;
     margin-top:15px;
+    /*-------------- 767  phone*/
+    @media all and (max-width: 767px){
+        @include wh(100%);
+    }
 }
 .topPosts{
     float: right;

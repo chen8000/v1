@@ -6,6 +6,7 @@
     font-size:25px;
     font-weight: 500;
     color:$vgcBlue;
+
 }
 .mintitle{
     font-weight: 500;
@@ -43,15 +44,30 @@
     list-style:none;
     display: inline-block;
     box-sizing: border-box;
+    /*-------------- 767  phone*/
+    @media all and (max-width: 767px){
+        width: 50%;
+    }
     
 }
 /* 数字显示布局 */
 .textView{
     width: calc(100% + 30px);
     margin-left:-30px;
+
+    /*-------------- 767  phone*/
+    @media all and (max-width: 767px){
+        width: calc(100% + 15px);
+        margin-left:-15px;
+    }
 }
 .textView li{
     padding-left:30px;
+    /*-------------- 767  phone*/
+    @media all and (max-width: 767px){
+        padding-left:15px;
+        margin-bottom:15px;
+    }
 }
 
 .viewLayout{

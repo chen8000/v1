@@ -20,6 +20,12 @@ $timeH:30px;
 }
 .title{
     float: left;
+    /*-------------- 767  phone*/
+    @media all and (max-width: 767px){
+        display: block;
+        @include wh(100%);
+        margin-bottom:15px;
+    }
 }
 .viewDatebox{
     float:right;
