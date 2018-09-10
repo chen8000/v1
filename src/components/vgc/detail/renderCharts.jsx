@@ -27,7 +27,13 @@ export const renderCharts = (obj, { xNum, AudiData, VCICData }) => {
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
-                data: xNum,
+                data: (xNum => {
+                    let arr = []
+                    for(let i = 1; i< xNum+1; i++){
+                        arr.push(i)
+                    }
+                    return arr
+                })(xNum),
                 axisLine: {
                     show: false
                 },

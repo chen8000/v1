@@ -27,50 +27,7 @@ $timeH:30px;
         margin-bottom:15px;
     }
 }
-.viewDatebox{
-    float:right;
-    @include radius(5px);
-    @include shadow;
 
-    span,
-    p{
-        float: left;
-        @include lineCenter($timeH);
-    }
-
-    .viewDate{
-        padding:0 15px;
-        color: #868686;
-    }
-
-    span{
-
-        @include wh($timeH, $timeH);
-        position: relative;
-
-        &:after{
-            @include afterBlock;
-            @include positionCenter;
-
-            border:8px solid rgba(0,0,0,0);
-            border-right:8px solid #dfdfdf;
-            // left:25%;
-            transform: translate(-75%, -50%);
-        
-        }
-    }
-    .left{
-        border-right:1px solid #dfdfdf;
-    }
-    .right{ 
-        border-left:1px solid #dfdfdf;
-        &:after{
-            border:8px solid rgba(0,0,0,0);
-            border-left:8px solid #dfdfdf;
-            transform: translate(-25%, -50%);
-        }
-    }
-}
 .title{
     color:$vgcBlue;
     font-size:20px;

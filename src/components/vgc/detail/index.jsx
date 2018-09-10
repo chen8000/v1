@@ -2,8 +2,13 @@
 import React, { Component } from 'react'
 import style from './index.scss'
 import { renderCharts } from './renderCharts'
+import 'fetch-detector'
+import 'fetch-ie8'
+import { getDate, total } from '../module/date'
 
+// 子组件
 import Select from '../select'
+import Date from '../date'
 
 class Detail extends Component {
 
@@ -11,45 +16,91 @@ class Detail extends Component {
         super(props)
 
         this.state = {
-            // 坐标
-            xNum:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+            // 坐标 一个月的总数
+            xNum:total(getDate().year, getDate().month),  // 根据选中的是日还是月修改坐标
             // 奥迪数据
-            AudiData:[15, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133, 132,30, 93, 30, 93, 100, 133],
+            AudiData:[],
             // 大众数据
-            VCICData:[10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 16,10, 30, 80, 60, 90, 50, 60, 90, 50, 16,10, 30, 80, 60, 90, 50],
+            VCICData:[],
+            // select
+            select:['月', '日'],
+            // 默认选中值
+            selected:'月', // 当前选中的是日还是月
+            // 当前日期
+            date:getDate() // 当前选中的日期
             
-            select:['月', '日']
         }
+
+        // 获取数据 fetch
+        this.getData()
+        
     }
 
-    // 初始化渲染
-    componentDidMount(){
-        // 渲染图标数据
-        renderCharts(this.charts, this.state)
-    }
-
+    // 获取初始数据
+    getData = () => {
+        fetch('/json/detail.json')
+        .then(res => res.json())
+        .then(res => {
+            this.setState(res)
+        })
+    }   
     // 修改数据后渲染
     componentDidUpdate(){
         // 渲染图标数据
         renderCharts(this.charts, this.state)
+
     }
 
-    getVal = val => {
-        // 获取select选中的值
+    getJson = (val) => {
         console.log(val)
     }
 
+    // 获取select的val
+    getVal = val => {
+        let { selected, date } = this.state
+
+        selected = val
+
+        this.setState({selected:val})
+
+        // 根据选中的是月还是日，修改坐标数值
+        if(selected === '月'){
+            let xNum = total(date.year, date.month)
+            this.setState({ xNum })
+        }
+        if(selected === '日'){
+            let xNum = 24
+            this.setState({ xNum })
+        }
+        this.getJson({selected, date})
+    }
+
+    // 修改date
+    setDate = date => {
+        let {xNum, selected} = this.state
+
+        // 如果是月，根据选中的日期显示每月多少天
+        if(selected === '月'){
+            xNum = total(date.year, date.month)
+            this.setState({ xNum })
+        }
+
+        // 修改当前选中的日期
+        this.setState({ date })
+        this.getJson({selected, date})
+    }
+
     render(){
-        let { select } = this.state
+        let { select, selected, date } = this.state
+        
         return (
             <div>
                 <div className={ style.titleBar }>
                     <h2 className={ style.title }>Lorem, ipsum ipsum</h2>
-                    <div className={ style.viewDatebox }>
-                        <span className={ style.left }></span>
-                        <p className={ style.viewDate }>2018-9-6</p>
-                        <span className={ style.right }></span>
-                    </div>
+                    <Date 
+                        selected={ selected } 
+                        setDate = {this.setDate} 
+                        date={ date }/>
                     <Select select={ select } getVal={ this.getVal }/>
                 </div>
 
