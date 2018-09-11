@@ -45,9 +45,6 @@ class App extends Component {
             data:val
         }
 
-        console.log('topUsers 和 topPosts')
-        console.log(JSON.stringify(jsonData))
-
         // fetch (两个) topusers
         fetch(topUsers
         // , { 

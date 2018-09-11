@@ -44,9 +44,6 @@ class Stacked extends Component {
             }
         }
 
-        console.log('stacked')
-        console.log(JSON.stringify(jsonData))
-
         fetch(stackedJson
         // , { 
         //     method: "post", 

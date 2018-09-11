@@ -54,9 +54,6 @@ class Detail extends Component {
             data:val
         }
 
-        console.log('detail')
-        console.log(JSON.stringify(jsonData))
-
         fetch(detailJson
         // , { 
         //     method: "post", 
