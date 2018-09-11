@@ -32,30 +32,6 @@ class TopUsers extends Component{
                 {
                     userName:'users',
                     pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
                 }
             ]
         }

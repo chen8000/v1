@@ -36,10 +36,10 @@
 }
 .usersbox{
     max-height: 255px;  
-    overflow:scroll;
+    // overflow:scroll;
     padding:15px 0;
     color:$textColor;
-    -webkit-overflow-scrolling: touch;
+    // -webkit-overflow-scrolling: touch;
     ul{
         list-style: none;
 

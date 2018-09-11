@@ -13,36 +13,18 @@ class Stacked extends Component {
 
         this.state = {
             // 坐标name
-            xNum : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            xNum : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
             // 显示数据
-            data : [120, 200, 150, 80, 70, 110],
+            data : [],
 
             // 选择部门
             select : [
-                {
-                    name:'部门1',
-                    id:0
-                },
-                {
-                    name:'部门2',
-                    id:1
-                },
-                {
-                    name:'部门3',
-                    id:2
-                },
-                {
-                    name:'部门4',
-                    id:3
-                },
-                {
-                    name:'部门5',
-                    id:4
-                },
-                {
-                    name:'部门6',
-                    id:5
-                }
+                {name:'部门1',id:0},
+                {name:'部门2',id:1},
+                {name:'部门3',id:2},
+                {name:'部门4',id:3},
+                {name:'部门5',id:4},
+                {name:'部门6',id:5}
             ]
         }
 
