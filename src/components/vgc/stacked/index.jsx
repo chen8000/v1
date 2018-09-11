@@ -45,11 +45,12 @@ class Stacked extends Component {
         }
 
         fetch(stackedJson
-        // , { 
-        //     method: "post", 
-        //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
-        //     body: JSON.stringify(jsonData)
-        // }
+            // , { 
+            //     method: "post", 
+            //     mode: "cors",
+            //     headers: {'Content-Type': 'text/plain',}, 
+            //     body: JSON.stringify(jsonData)
+            // }
         )
         .then(res => res.json())
         .then(res => {

@@ -49,7 +49,8 @@ class App extends Component {
         fetch(topUsers
         // , { 
         //     method: "post", 
-        //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+        //     mode: "cors",
+        //     headers: {'Content-Type': 'text/plain',}, 
         //     body: JSON.stringify(jsonData)
         // }
         )
@@ -64,7 +65,8 @@ class App extends Component {
         fetch(topPosts
             // , { 
             //     method: "post", 
-            //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+            //     mode: "cors",
+            //     headers: {'Content-Type': 'text/plain',}, 
             //     body: JSON.stringify(jsonData)
             // }
         )
