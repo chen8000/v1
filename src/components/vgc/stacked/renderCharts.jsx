@@ -2,7 +2,7 @@
 
 import echarts from 'echarts'
 
-export const renderCharts = (obj, { xNum, data }) => {
+export const renderCharts = (obj, xNum, data) => {
 
     let Charts = echarts.init(obj)
         Charts.setOption({
@@ -13,14 +13,20 @@ export const renderCharts = (obj, { xNum, data }) => {
             },
             grid: {
                 left: '1%',
-                right: '1%',
+                right: '0%',
                 bottom: '0%',
                 containLabel: true,
                 borderWidth:0
             },
             xAxis: {
                 type: 'category',
-                data: xNum,
+                data: (xNum => {
+                    let arr = []
+                    for(let i = 1; i< xNum+1; i++){
+                        arr.push(i)
+                    }
+                    return arr
+                })(xNum),
                 axisTick: {
                     show: false,
                     alignWithLabel: 1,

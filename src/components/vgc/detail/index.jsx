@@ -33,6 +33,10 @@ class Detail extends Component {
 
         // 获取数据 fetch
         this.getData()
+
+        // 把选中的数据传给柱形图(初始默认数据)
+        let { xNum, selected, date } = this.state
+        this.props.setStackedData({ xNum, selected, date })
         
     }
 
@@ -43,6 +47,8 @@ class Detail extends Component {
         .then(res => {
             this.setState(res)
         })
+
+
     }   
     // 修改数据后渲染
     componentDidUpdate(){
@@ -52,8 +58,11 @@ class Detail extends Component {
     }
 
     // 得到当前选中的 月/日 和日期（根据这个问后台要数据）
-    getJson = (val) => {
-        console.log(val)
+    getJson = val => {
+
+
+        // 把选中的数据传给柱形图
+        this.props.setStackedData(val)
     }
 
     // 获取select的val
@@ -65,16 +74,18 @@ class Detail extends Component {
 
         this.setState({selected})
 
+        let xNum;
+
         // 根据选中的是月还是日，修改坐标数值
         if(selected.name === '月'){
-            let xNum = total(date.year, date.month)
+            xNum = total(date.year, date.month)
             this.setState({ xNum })
         }
         if(selected.name === '日'){
-            let xNum = 24
+            xNum = 24
             this.setState({ xNum })
         }
-        this.getJson({selected, date})
+        this.getJson({ xNum, selected, date})
     }
 
     // 修改date
@@ -89,7 +100,7 @@ class Detail extends Component {
 
         // 修改当前选中的日期
         this.setState({ date })
-        this.getJson({selected, date})
+        this.getJson({ xNum, selected, date})
     }
 
     render(){
@@ -99,10 +110,9 @@ class Detail extends Component {
             <div>
                 <div className={ style.titleBar }>
                     <h2 className={ style.title }>Lorem, ipsum ipsum</h2>
-                    <Date 
-                        selected={ selected } 
-                        setDate = {this.setDate} 
-                        date={ date }/>
+                    <Date selected={ selected } 
+                          setDate = {this.setDate} 
+                          date={ date }/>
                     <Select select={ select } getVal={ this.getVal }/>
                 </div>
 

@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react'
 import style from './app.scss'
-
+import 'fetch-detector'
+import 'fetch-ie8'
 
 // 子组件
 import OverView from './overView'
@@ -12,30 +13,85 @@ import TopPosts from './topPosts'
 
 class App extends Component {
 
+    constructor(props){
+        super(props)
+
+        this.state = {
+            // 柱形图
+            stackedData:{
+                xNum:24,
+                selected:'月',
+                date:{}
+            },
+            // toppost topUsers 数据
+            topUsers:[],
+            topPosts:[]
+        }
+    }
+
+    // 根据线图的改变 改变柱形图的数据
+    setStackedData = val => {
+        this.setState({stackedData:val})
+
+        this.getTopData(val)
+    }
+
+    // 通过子组件传来的值 获取 topPosts模块和topUsers模块的 数据
+    getTopData = val => {
+        let { date, selected } = val
+        console.log(date, selected)
+
+        // fetch (两个) topusers
+        fetch('/json/topusers.json', 
+        { 
+            method: "get"
+            // , 
+            // headers: {'Content-Type': 'application/x-www-form-urlencoded' }, 
+            // body: "q=参数q"
+        })
+        .then(res => {
+            return res.json()
+        })
+        .then(res => {
+            this.setState({topUsers:res})
+        })
+
+
+        fetch('/json/topposts.json', 
+        {
+            method:'get'
+        })
+        .then(res => {
+            return res.json()
+        })
+        .then(res => {
+            this.setState({topPosts:res})
+        })
+    }
+
     render(){
+        let { stackedData, topUsers, topPosts } = this.state
+
         return (
             <div className={ style.app }>
                 
-
                 {/* 数字 */}
                 <OverView />
                 {/* line charts */}
-                <Detail />
+                <Detail setStackedData = {this.setStackedData}/>
                 {/* 柱形图 */}
-                <Stacked />
-
-                {/* 两列布局 */}
+                <Stacked res={stackedData}/>
 
                 {/* 两列布局 */}
                 <div className={style.twoLayout}>
                     {/* topUsers */}
                     <div className={style.topUsers}>
-                        <TopUsers /> 
+                        <TopUsers res={topUsers}/> 
                     </div>
 
                     {/* topPosts */}
                     <div className={style.topPosts}>
-                        <TopPosts />
+                        <TopPosts res={topPosts}/>
                     </div>
                 </div>
                 

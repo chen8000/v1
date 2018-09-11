@@ -12,11 +12,6 @@ class Stacked extends Component {
         super(props)
 
         this.state = {
-            // 坐标name
-            xNum : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Fri', 'Sat','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            // 显示数据
-            data : [],
-
             // 选择部门
             select : [
                 {name:'部门1',id:0},
@@ -25,28 +20,44 @@ class Stacked extends Component {
                 {name:'部门4',id:3},
                 {name:'部门5',id:4},
                 {name:'部门6',id:5}
-            ]
+            ],
+            selected:{name:'部门1',id:0}
         }
 
-        // 获取数据
-        this.getData()
     }
 
     // 修改数据后渲染
     componentDidUpdate(){
-        renderCharts(this.echarts, this.state)
+        // 获取数据
+        this.getData()
     }
 
+    // 根据年月日获取对应数据
     getData = () => {
+        // xNum 坐标
+        // date 日期（年月日）
+        // lineSelected 线图选中 （月 日）
+        let { xNum, date } = this.props.res
+        let lineSelected = this.props.res.selected
+        // 柱形图选中
+        let { selected } = this.state
+
+        // 部门，年月日， 月日
+        console.log({date, lineSelected, selected})
+
         fetch('/json/stacked.json')
         .then(res => res.json())
         .then(res => {
-            this.setState(res)
+            let { data } = res
+            renderCharts(this.echarts, xNum, data)  
         })
     }
 
+    // 部门
     getVal = val => {
-        console.log(val)
+
+        // 选中部门的selected
+        this.setState({ selected:val })
     }
 
     render(){

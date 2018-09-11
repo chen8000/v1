@@ -4,42 +4,8 @@ import style from './index.scss'
 
 class TopUsers extends Component{
 
-    constructor(props){
-        super(props)
-
-        this.state = {
-            users:[
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                },
-                {
-                    userName:'users',
-                    pageView:25
-                }
-            ]
-        }
-
-    }
-
     render(){
-        let { users } = this.state
+        let { res } = this.props
         return(
             <div className={style.users}> 
                 <h2 className={style.title}>TOP USERS</h2>
@@ -51,7 +17,7 @@ class TopUsers extends Component{
                 <div className={style.usersbox}>
                     <ul>
                         {
-                            users.map((res, i) => 
+                            res.map((res, i) => 
                                 <li key={i}>
                                     <p> 
                                         <i className="iconfont icon-user"></i>
