@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import style from './app.scss'
 import 'fetch-detector'
 import 'fetch-ie8'
+import { topPosts, topUsers } from './config/fetchindex'
 
 // 子组件
 import OverView from './overView'
@@ -27,6 +28,8 @@ class App extends Component {
             topUsers:[],
             topPosts:[]
         }
+
+        
     }
 
     // 根据线图的改变 改变柱形图的数据
@@ -42,13 +45,13 @@ class App extends Component {
         console.log(date, selected)
 
         // fetch (两个) topusers
-        fetch('/json/topusers.json', 
-        { 
-            method: "get"
-            // , 
-            // headers: {'Content-Type': 'application/x-www-form-urlencoded' }, 
-            // body: "q=参数q"
-        })
+        fetch(topUsers
+        // , { 
+        //     method: "post", 
+        //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+        //     body: `date=${date}&selected=${selected}`
+        // }
+        )
         .then(res => {
             return res.json()
         })
@@ -57,10 +60,13 @@ class App extends Component {
         })
 
 
-        fetch('/json/topposts.json', 
-        {
-            method:'get'
-        })
+        fetch(topPosts
+            // , { 
+            //     method: "post", 
+            //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+            //     body: `date=${date}&selected=${selected}`
+            // }
+        )
         .then(res => {
             return res.json()
         })

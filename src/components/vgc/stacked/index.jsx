@@ -5,6 +5,7 @@ import { renderCharts } from './renderCharts'
 import Select from '../select'
 import 'fetch-detector'
 import 'fetch-ie8'
+import { stackedJson, selectJson } from '../config/fetchindex'
 
 class Stacked extends Component {
 
@@ -13,27 +14,22 @@ class Stacked extends Component {
 
         this.state = {
             // 选择部门
-            select : [
-                {name:'部门1',id:0},
-                {name:'部门2',id:1},
-                {name:'部门3',id:2},
-                {name:'部门4',id:3},
-                {name:'部门5',id:4},
-                {name:'部门6',id:5}
-            ],
-            selected:{name:'部门1',id:0}
+            select : [{name:'选择部门',id:'00'}],
+            selected: {name:'选择部门',id:'00'}
         }
-
+    }
+    componentWillMount(){
+        // 获取部门数据
+        fetch(selectJson)
+        .then(res => res.json())
+        .then(res => {
+            this.setState({select:res, selected:res[0]})
+            
+        })
     }
 
     // 修改数据后渲染
     componentDidUpdate(){
-        // 获取数据
-        this.getData()
-    }
-
-    // 根据年月日获取对应数据
-    getData = () => {
         // xNum 坐标
         // date 日期（年月日）
         // lineSelected 线图选中 （月 日）
@@ -42,31 +38,35 @@ class Stacked extends Component {
         // 柱形图选中
         let { selected } = this.state
 
-        // 部门，年月日， 月日
-        console.log({date, lineSelected, selected})
+        // console.log(selected)
 
-        fetch('/json/stacked.json')
+        fetch(stackedJson
+        // , { 
+        //     method: "post", 
+        //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+        //     body: `date=${date}&selected=${selected}&lineSelected=${lineSelected}`
+        // }
+        )
         .then(res => res.json())
         .then(res => {
             let { data } = res
             renderCharts(this.echarts, xNum, data)  
         })
     }
-
     // 部门
     getVal = val => {
-
         // 选中部门的selected
         this.setState({ selected:val })
     }
 
     render(){
-        let { select } = this.state
+        let { select, selected } = this.state
+        
         return (
             <div className={style.stacked}>
                 <div className={style.title}>
                     <h2>STACKED CHART</h2>
-                    <Select select={ select } getVal={ this.getVal }/>
+                    <Select select={ select } selected={ selected } getVal={ this.getVal }/>
                 </div>
                 <div ref={d => this.echarts = d} className={style.echarts}></div>
             </div>

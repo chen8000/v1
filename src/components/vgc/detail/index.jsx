@@ -5,6 +5,7 @@ import { renderCharts } from './renderCharts'
 import 'fetch-detector'
 import 'fetch-ie8'
 import { getDate, total } from '../module/date'
+import { detailJson } from '../config/fetchindex'
 
 // 子组件
 import Select from '../select'
@@ -31,25 +32,14 @@ class Detail extends Component {
             
         }
 
-        // 获取数据 fetch
-        this.getData()
-
         // 把选中的数据传给柱形图(初始默认数据)
         let { xNum, selected, date } = this.state
         this.props.setStackedData({ xNum, selected, date })
+        // 获取数据 fetch
+        this.getJson({xNum, selected, date})
         
     }
 
-    // 获取初始数据
-    getData = () => {
-        fetch('/json/detail.json')
-        .then(res => res.json())
-        .then(res => {
-            this.setState(res)
-        })
-
-
-    }   
     // 修改数据后渲染
     componentDidUpdate(){
         // 渲染图标数据
@@ -60,6 +50,19 @@ class Detail extends Component {
     // 得到当前选中的 月/日 和日期（根据这个问后台要数据）
     getJson = val => {
 
+        // let {xNum, selected, date} = val
+
+        fetch(detailJson
+        // , { 
+        //     method: "post", 
+        //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
+        //     body: `date=${date}&selected=${selected}`
+        // }
+        )
+        .then(res => res.json())
+        .then(res => {
+            this.setState(res)
+        })
 
         // 把选中的数据传给柱形图
         this.props.setStackedData(val)
@@ -113,7 +116,7 @@ class Detail extends Component {
                     <Date selected={ selected } 
                           setDate = {this.setDate} 
                           date={ date }/>
-                    <Select select={ select } getVal={ this.getVal }/>
+                    <Select select={ select } selected={ selected } getVal={ this.getVal }/>
                 </div>
 
                 {/* 放图表 */}
