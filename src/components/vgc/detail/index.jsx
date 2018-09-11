@@ -24,9 +24,9 @@ class Detail extends Component {
             // 大众数据
             VCICData:[],
             // select
-            select:[{name:'日', id : 0}, {name:'月', id : 1}],
+            select:[{name:'日', id :'日'}, {name:'月', id : '月'}],
             // 默认选中值
-            selected:{name:'日', id : 0}, // 当前选中的是日还是月
+            selected:{name:'日', id :'日'}, // 当前选中的是日还是月
             // 当前日期
             date:getDate() // 当前选中的日期
             
@@ -53,6 +53,9 @@ class Detail extends Component {
         let jsonData = {
             data:val
         }
+
+        console.log('detail')
+        console.log(JSON.stringify(jsonData))
 
         fetch(detailJson
         // , { 

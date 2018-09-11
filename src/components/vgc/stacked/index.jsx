@@ -14,8 +14,8 @@ class Stacked extends Component {
 
         this.state = {
             // 选择部门
-            select : [{name:'选择部门',id:'00'}],
-            selected: {name:'选择部门',id:'00'}
+            select : [{name:'选择部门',id:'选择部门'}],
+            selected: {name:'选择部门',id:'选择部门'}
         }
     }
     componentWillMount(){
@@ -43,7 +43,10 @@ class Stacked extends Component {
                 date, lineSelected, selected
             }
         }
-        
+
+        console.log('stacked')
+        console.log(JSON.stringify(jsonData))
+
         fetch(stackedJson
         // , { 
         //     method: "post", 
