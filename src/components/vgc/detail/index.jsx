@@ -50,13 +50,15 @@ class Detail extends Component {
     // 得到当前选中的 月/日 和日期（根据这个问后台要数据）
     getJson = val => {
 
-        // let {xNum, selected, date} = val
+        let jsonData = {
+            data:val
+        }
 
         fetch(detailJson
         // , { 
         //     method: "post", 
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
-        //     body: `date=${date}&selected=${selected}`
+        //     body: JSON.stringify(jsonData)
         // }
         )
         .then(res => res.json())

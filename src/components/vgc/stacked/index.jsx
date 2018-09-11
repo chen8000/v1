@@ -38,13 +38,17 @@ class Stacked extends Component {
         // 柱形图选中
         let { selected } = this.state
 
-        // console.log(selected)
-
+        let jsonData = {
+            data:{
+                date, lineSelected, selected
+            }
+        }
+        
         fetch(stackedJson
         // , { 
         //     method: "post", 
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
-        //     body: `date=${date}&selected=${selected}&lineSelected=${lineSelected}`
+        //     body: JSON.stringify(jsonData)
         // }
         )
         .then(res => res.json())

@@ -41,15 +41,16 @@ class App extends Component {
 
     // 通过子组件传来的值 获取 topPosts模块和topUsers模块的 数据
     getTopData = val => {
-        let { date, selected } = val
-        console.log(date, selected)
+        let jsonData = {
+            data:val
+        }
 
         // fetch (两个) topusers
         fetch(topUsers
         // , { 
         //     method: "post", 
         //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
-        //     body: `date=${date}&selected=${selected}`
+        //     body: JSON.stringify(jsonData)
         // }
         )
         .then(res => {
@@ -64,7 +65,7 @@ class App extends Component {
             // , { 
             //     method: "post", 
             //     headers: {'Accept': 'application/json','Content-Type': 'application/json',}, 
-            //     body: `date=${date}&selected=${selected}`
+            //     body: JSON.stringify(jsonData)
             // }
         )
         .then(res => {
