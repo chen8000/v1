@@ -28,7 +28,7 @@
 
 
 //  配置json请求地址
-const __HOST__ = '/vcic/testsite/_layouts/15/personal/Handlers/DashboardService.ashx?Method='
+const __HOST__ = 'Handlers/DashboardService.ashx?Method='
 
 // detail  折线图
 export const detailJson = `${__HOST__}getCompanyData`

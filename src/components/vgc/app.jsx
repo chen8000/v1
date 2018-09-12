@@ -4,6 +4,8 @@ import style from './app.scss'
 import 'fetch-detector'
 import 'fetch-ie8'
 import { topPosts, topUsers } from './config/fetchindex'
+import 'core-js/es6/map'
+import 'core-js/es6/set'
 
 // 子组件
 import OverView from './overView'
