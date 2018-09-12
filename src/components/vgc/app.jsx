@@ -47,12 +47,12 @@ class App extends Component {
 
         // fetch (两个) topusers
         fetch(topUsers
-        // , { 
-        //     method: "post", 
-        //     mode: "cors",
-        //     headers: {'Content-Type': 'text/plain',}, 
-        //     body: JSON.stringify(jsonData)
-        // }
+            , { 
+                method: "post", 
+                mode: "cors",
+                headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
+                body: JSON.stringify(jsonData)
+            }
         )
         .then(res => {
             return res.json()
@@ -63,12 +63,12 @@ class App extends Component {
 
 
         fetch(topPosts
-            // , { 
-            //     method: "post", 
-            //     mode: "cors",
-            //     headers: {'Content-Type': 'text/plain',}, 
-            //     body: JSON.stringify(jsonData)
-            // }
+            , { 
+                method: "post", 
+                mode: "cors",
+                headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
+                body: JSON.stringify(jsonData)
+            }
         )
         .then(res => {
             return res.json()

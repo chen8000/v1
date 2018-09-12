@@ -55,15 +55,16 @@ class Detail extends Component {
         }
 
         fetch(detailJson
-            // , { 
-            //     method: "post", 
-            //     mode: "cors",
-            //     headers: {'Content-Type': 'text/plain',}, 
-            //     body: JSON.stringify(jsonData)
-            // }
+            , { 
+                method: "post", 
+                mode: "cors",
+                headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
+                body: JSON.stringify(jsonData)
+            }
         )
         .then(res => res.json())
         .then(res => {
+            // console.log(res)
             this.setState(res)
         })
 
