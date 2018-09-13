@@ -34,19 +34,19 @@ const __HOST__ = 'Handlers/DashboardService.ashx?Method='
 export const detailJson = `${__HOST__}getCompanyData`
 
 // select 部门list
-export const selectJson = `${__HOST__}getDeptData`
+export const selectJson = `${__HOST__}getDepts`
 
 // stacked  柱形图
-export const stackedJson = `${__HOST__}getSiteData`
+export const stackedJson = `${__HOST__}getDeptData`
 
 // topposts  posts
-export const topPosts = `${__HOST__}getSiteTopPosts`
+export const topPosts = `${__HOST__}getTopPosts`
 
 // topusers  users
-export const topUsers = `${__HOST__}getSiteTopUsers`
+export const topUsers = `${__HOST__}getTopUsers`
 
 // OverView  头部文字
-export const OverViewJson = `${__HOST__}getSiteOverView`
+export const OverViewJson = `${__HOST__}getOverView`
 
 
 

@@ -50,16 +50,12 @@ class Detail extends Component {
     // 得到当前选中的 月/日 和日期（根据这个问后台要数据）
     getJson = val => {
 
-        let jsonData = {
-            data:val
-        }
-
         fetch(detailJson
             , { 
                 method: "post", 
                 mode: "cors",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
-                body: JSON.stringify(jsonData)
+                body: JSON.stringify(val)
             }
         )
         .then(res => res.json())
@@ -78,6 +74,7 @@ class Detail extends Component {
         let { selected, date } = this.state
         
         selected.name = val.name
+        selected.id = val.id
 
         this.setState({selected})
 
@@ -116,7 +113,7 @@ class Detail extends Component {
         return (
             <div>
                 <div className={ style.titleBar }>
-                    <h2 className={ style.title }>Lorem, ipsum ipsum</h2>
+                    <h2 className={ style.title }>Detail Statistics</h2>
                     <Date selected={ selected } 
                           setDate = {this.setDate} 
                           date={ date }/>

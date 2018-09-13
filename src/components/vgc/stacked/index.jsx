@@ -39,16 +39,14 @@ class Stacked extends Component {
         let { selected } = this.state
 
         let jsonData = {
-            data:{
-                date, lineSelected, selected
-            }
+            date, lineSelected, selected
         }
 
         fetch(stackedJson
             , { 
                 method: "post", 
                 mode: "cors",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
                 body: JSON.stringify(jsonData)
             }
         )

@@ -43,9 +43,6 @@ class App extends Component {
 
     // 通过子组件传来的值 获取 topPosts模块和topUsers模块的 数据
     getTopData = val => {
-        let jsonData = {
-            data:val
-        }
 
         // fetch (两个) topusers
         fetch(topUsers
@@ -53,7 +50,7 @@ class App extends Component {
                 method: "post", 
                 mode: "cors",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
-                body: JSON.stringify(jsonData)
+                body: JSON.stringify(val)
             }
         )
         .then(res => {
@@ -69,7 +66,7 @@ class App extends Component {
                 method: "post", 
                 mode: "cors",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded',}, 
-                body: JSON.stringify(jsonData)
+                body: JSON.stringify(val)
             }
         )
         .then(res => {

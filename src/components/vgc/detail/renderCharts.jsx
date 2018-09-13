@@ -7,7 +7,7 @@ export const renderCharts = (obj, { xNum, AudiData, VCICData }) => {
     let Charts = echarts.init(obj)
         Charts.setOption({
             title: {
-                text: 'Lorem, ipsum ipsum',
+                text: ' Page View By Company',
                 textStyle:{
                     color:'#1b4663'
                 }
