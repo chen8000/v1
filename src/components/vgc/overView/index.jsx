@@ -27,7 +27,7 @@ class OverView extends Component {
         let { bar } = this.state
         return (
             <div>
-                <h2 className={ style.title }>WeConnect | VCIC IT Site User Report</h2>
+                <h2 className={ style.title }>NGI WeConnect Site Collections Report</h2>
                 <h3 className={ style.mintitle }>Overview</h3>
                 <div className={style.textViewBox}>
                     <ul className={style.textView}>
